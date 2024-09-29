@@ -8,4 +8,4 @@ license       = "MIT OR Apache-2.0"
 repository    = "https://github.com/TuEmb/as7331-rs"
 
 [dependencies]
-log = "0.4.22"
+log = { version = "0.4", default-features = false }
