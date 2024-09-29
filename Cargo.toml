@@ -10,7 +10,7 @@ repository    = "https://github.com/TuEmb/as7331-rs"
 [dependencies]
 esp-hal = "0.17.0"
 log = "0.4.20"
-esp-println = { version = "0.9.0", features = ["log"]}
+esp-println = { version = "0.11.0", features = ["log"]}
 esp-backtrace = { version = "0.11.0", features = [
     "exception-handler",
     "panic-handler",
