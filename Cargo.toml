@@ -1,6 +1,6 @@
 [package]
 name = "as7331-rs"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["tuemb <nvtu96@gmail.com>"]
 edition = "2021"
 description   = "as7331 driver in Rust for embedded devices"
