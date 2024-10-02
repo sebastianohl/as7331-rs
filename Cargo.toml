@@ -1,28 +1,13 @@
 [package]
 name = "as7331-rs"
 version = "0.1.2"
-authors = ["tuemb <nvtu96@gmail.com>"]
+authors = ["sebastian@ohl.name", "tuemb <nvtu96@gmail.com>"]
 edition = "2021"
-description   = "as7331 driver in Rust for embedded devices"
-license       = "MIT OR Apache-2.0"
-repository    = "https://github.com/TuEmb/as7331-rs"
+description = "as7331 driver in Rust for embedded devices"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/sebastianohl/as7331-rs"
+rust-version = "1.77"
 
 [dependencies]
 log = { version = "0.4", default-features = false }
-esp-hal = "0.20"
-esp-println = { version = "0.11", features = ["log"]}
-esp-backtrace = { version = "0.14", features = [
-    "exception-handler",
-    "panic-handler",
-    "println",
-] }
-
-[features]
-default = ["esp32c6"]
-esp32   = ["esp-hal/esp32",   "esp-backtrace/esp32",   "esp-println/esp32"]
-esp32c2 = ["esp-hal/esp32c2", "esp-backtrace/esp32c2", "esp-println/esp32c2"]
-esp32c3 = ["esp-hal/esp32c3", "esp-backtrace/esp32c3", "esp-println/esp32c3"]
-esp32c6 = ["esp-hal/esp32c6", "esp-backtrace/esp32c6", "esp-println/esp32c6"]
-esp32h2 = ["esp-hal/esp32h2", "esp-backtrace/esp32h2", "esp-println/esp32h2"]
-esp32s2 = ["esp-hal/esp32s2", "esp-backtrace/esp32s2", "esp-println/esp32s2"]
-esp32s3 = ["esp-hal/esp32s3", "esp-backtrace/esp32s3", "esp-println/esp32s3"]
+esp-idf-hal = { version = "0.44.1", default-features = false }
