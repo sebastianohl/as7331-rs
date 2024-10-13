@@ -4,14 +4,19 @@ use esp_idf_hal::i2c::I2cDriver;
 use esp_idf_hal::sys::EspError;
 use log::debug;
 
+pub const AS7331_I2CADDR_DEFAULT: u8 = 0x74;
+
 // Configuration State Registers
 const AS7331_OSR: u8 = 0x00;
 const AS7331_AGEN: u8 = 0x02;
 const AS7331_CREG1: u8 = 0x06;
+#[allow(unused)]
 const AS7331_CREG2: u8 = 0x07;
 const AS7331_CREG3: u8 = 0x08;
 const AS7331_BREAK: u8 = 0x09;
+#[allow(unused)]
 const AS7331_EDGES: u8 = 0x0a;
+#[allow(unused)]
 const AS7331_OPTREG: u8 = 0x0b;
 
 // Measurement State registers
@@ -20,7 +25,9 @@ const AS7331_TEMP: u8 = 0x01;
 const AS7331_MRES1: u8 = 0x02;
 const AS7331_MRES2: u8 = 0x03;
 const AS7331_MRES3: u8 = 0x04;
+#[allow(unused)]
 const AS7331_OUTCONV_L: u8 = 0x05;
+#[allow(unused)]
 const AS7331_OUTCONV_H: u8 = 0x06;
 
 pub const AS7331_CREG1_GAIN_2048: u8 = 0x0;
@@ -200,34 +207,24 @@ impl<'a> As7331<'a> {
     }
 
     pub fn power_up(&mut self) -> Result<(), EspError> {
-        let mut data = [0u8; 22];
-        //self.i2c_write_read_cmd(AS7331_OSR, &mut data)?;
+        let data = [0u8; 22];
         self.i2c_write_cmd(AS7331_OSR, data[0] | 0x40)
     }
 
     pub fn power_down(&mut self) -> Result<(), EspError> {
-        let mut data = [0u8; 22];
-        //self.i2c_write_read_cmd(AS7331_OSR, &mut data)?;
+        let data = [0u8; 22];
 
         self.i2c_write_cmd(AS7331_OSR, data[0] & !0x40)
     }
 
     pub fn reset(&mut self) -> Result<(), EspError> {
-        let mut data = [0u8; 22];
-        /*match self.i2c_write_read_cmd(AS7331_OSR, &mut data) {
-            Err(e) => return Err(e),
-            _ => {}
-        }*/
+        let data = [0u8; 22];
 
         self.i2c_write_cmd(AS7331_OSR, data[0] | 0x08)
     }
 
     pub fn set_configuration_mode(&mut self) -> Result<(), EspError> {
-        let mut data = [0u8; 22];
-        /*match self.i2c_write_read_cmd(AS7331_OSR, &mut data) {
-            Err(e) => return Err(e),
-            _ => {}
-        }*/
+        let data = [0u8; 22];
 
         self.i2c_write_cmd(AS7331_OSR, data[0] | 0x02)
     }
@@ -244,7 +241,7 @@ impl<'a> As7331<'a> {
     }
 
     pub fn set_measurement_mode(&mut self) -> Result<(), EspError> {
-        let mut data = [0u8; 22];
+        let data = [0u8; 22];
         /*match self.i2c_write_read_cmd(AS7331_OSR, &mut data) {
             Err(e) => return Err(e),
             _ => {}
